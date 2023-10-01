@@ -1,0 +1,10 @@
+version: 2.0
+
+defaultLocaleCode: zh-CN
+localeCodes:
+  - zh-CN
+
+params:
+  hello: world
+  foo:
+    - bar
