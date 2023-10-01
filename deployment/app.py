@@ -3,28 +3,24 @@ import os
 
 import aws_cdk as cdk
 
-from metagenomic_analysis.metagenomic_analysis_stack import MetagenomicAnalysisStack
+from metagenomic_analysis.batch_stack import BatchStack
+from metagenomic_analysis.vpc_stack import VPCStack
+from metagenomic_analysis.notebook_stack import NotebookStack
 
 ACCOUNT = os.getenv('AWS_ACCOUNT_ID', '')
 REGION = os.getenv('AWS_REGION', '')
 
 app = cdk.App()
-MetagenomicAnalysisStack(app, "MetagenomicAnalysisStack",
-    # If you don't specify 'env', this stack will be environment-agnostic.
-    # Account/Region-dependent features and context lookups will not work,
-    # but a single synthesized template can be deployed anywhere.
-
-    # Uncomment the next line to specialize this stack for the AWS Account
-    # and Region that are implied by the current CLI configuration.
-
-    #env=cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region=os.getenv('CDK_DEFAULT_REGION')),
-
-    # Uncomment the next line if you know exactly what Account and Region you
-    # want to deploy the stack to. */
-
-    env=cdk.Environment(account=ACCOUNT, region=REGION)
-
-    # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
-    )
+vpc_stack = VPCStack(app, "VPCStack", 
+                     env=cdk.Environment(account=ACCOUNT, region=REGION))
+batch_stack = BatchStack(app, "BatchStack", 
+                         vpc=vpc_stack.vpc, 
+                         default_sg=vpc_stack.default_sg, 
+                         file_system=vpc_stack.file_system, 
+                         repo=vpc_stack.repo,
+                         env=cdk.Environment(account=ACCOUNT, region=REGION))
+notebook_stack = NotebookStack(app, "NotebookStack", 
+                               vpc=vpc_stack.vpc,
+                               env=cdk.Environment(account=ACCOUNT, region=REGION))
 
 app.synth()
