@@ -8,7 +8,7 @@ from metagenomic_analysis.vpc_stack import VPCStack
 from metagenomic_analysis.notebook_stack import NotebookStack
 
 ACCOUNT = os.getenv('AWS_ACCOUNT_ID', '')
-REGION = os.getenv('AWS_REGION', '')
+REGION = os.getenv('AWS_REGION', 'cn-nothwest-1')
 
 app = cdk.App()
 vpc_stack = VPCStack(app, "VPCStack", 

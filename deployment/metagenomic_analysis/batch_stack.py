@@ -37,17 +37,17 @@ class BatchStack(Stack):
             use_optimal_instance_classes=False)
 
         compute_env_assembly = batch.ManagedEc2EcsComputeEnvironment(self, "EnvAssembly", compute_environment_name="env-assembly-test", vpc=vpc, 
-            minv_cpus=0, maxv_cpus=2048, instance_types=[ec2.InstanceType("c6g.24xlarge")],launch_template=lt_metawrap, 
+            minv_cpus=0, maxv_cpus=2048, instance_types=[ec2.InstanceType("c6i.24xlarge")],launch_template=lt_metawrap, 
             security_groups=[default_sg], vpc_subnets=ec2.SubnetSelection(subnets=private_subnets), allocation_strategy=batch.AllocationStrategy.BEST_FIT,
             use_optimal_instance_classes=False)
 
         compute_env_binning = batch.ManagedEc2EcsComputeEnvironment(self, "EnvBinning", compute_environment_name="env-binning-test", vpc=vpc, 
-            minv_cpus=0, maxv_cpus=2048, instance_types=[ec2.InstanceType("c6g.8xlarge")],launch_template=lt_metawrap, 
+            minv_cpus=0, maxv_cpus=2048, instance_types=[ec2.InstanceType("c6i.8xlarge")],launch_template=lt_metawrap, 
             security_groups=[default_sg], vpc_subnets=ec2.SubnetSelection(subnets=private_subnets), allocation_strategy=batch.AllocationStrategy.BEST_FIT,
             use_optimal_instance_classes=False)
 
-        compute_env_annotation = batch.ManagedEc2EcsComputeEnvironment(self, "EnvAnnotation", compute_environment_name="env--annotation-test", vpc=vpc, 
-            minv_cpus=0, maxv_cpus=2048, instance_types=[ec2.InstanceType("c6g.12xlarge")],launch_template=lt_annotation, 
+        compute_env_annotation = batch.ManagedEc2EcsComputeEnvironment(self, "EnvAnnotation", compute_environment_name="env-annotation-test", vpc=vpc, 
+            minv_cpus=0, maxv_cpus=2048, instance_types=[ec2.InstanceType("c6i.12xlarge")],launch_template=lt_annotation, 
             security_groups=[default_sg], vpc_subnets=ec2.SubnetSelection(subnets=private_subnets), allocation_strategy=batch.AllocationStrategy.BEST_FIT,
             use_optimal_instance_classes=False)
 
