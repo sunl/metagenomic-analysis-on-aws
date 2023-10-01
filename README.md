@@ -1,1 +1,1 @@
-# metagenomic-on-aws
+# metagenomic-analysis-on-aws
