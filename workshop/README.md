@@ -8,9 +8,9 @@
 ├── README.md                         <-- This instructions file
 ├── static                            <-- Directory for static assets to be hosted alongside the workshop (ie. images, scripts, documents, etc) 
 └── content                           <-- Directory for workshop content markdown
-    └── index.en.md                   <-- At the root of each directory, there must be at least one markdown file
+    └── index.zh.md                   <-- At the root of each directory, there must be at least one markdown file
     └── introduction                  <-- Directory for workshop content markdown
-        └── index.en.md               <-- Markdown file that would be render 
+        └── index.zh.md               <-- Markdown file that would be render 
 ```
 
 ## What's Included

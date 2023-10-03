@@ -37,12 +37,13 @@ pip install -r requirements.txt
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 :::
 
-6.将您的账号信息以及需要部署的Region ID导入到环境变量中，本workshop将方案部署在cn-northwest-1:
+6.将您的账号信息以、需要部署的Region ID以及用于接收通知邮件的邮箱导入到环境变量中，本workshop将方案部署在cn-northwest-1:
 :::code{showCopyAction=true showLineNumbers=false language=bash}
-export AWS_ACCOUNT_ID=XXXXXXXXXXXX
+export AWS_ACCOUNT_ID=xxxxxxxxxxxx
 export AWS_REGION=cn-northwest-1
-export AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXXX
-export AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXX
+export AWS_ACCESS_KEY_ID=xxxxxxxxxxxxxxxx
+export AWS_SECRET_ACCESS_KEY=xxxxxxxxxxxxxxxxxxxxxxxx
+export EMAIL=xxx@xxxx.com
 :::
 
 7.为CDK配置资源，备注：如果您之前安装过本解决方案，本次新安装请先确保您已经卸载所有组件，并且删除名为“cdk-hnb659fds-assets”开头的S3 bucket，以便后续的安装指令可以正常执行，执行以下命令:

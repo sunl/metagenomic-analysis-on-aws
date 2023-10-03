@@ -45,7 +45,7 @@ class VPCStack(Stack):
         ddb_endpoint = vpc.add_gateway_endpoint("DynamoDBEndpoint", service=ec2.GatewayVpcEndpointAwsService.DYNAMODB)
 
         bucket = s3.Bucket(self,'MetagenomicBucket',
-            bucket_name='metagenomic-' + ACCOUNT + '-' + REGION ,  # 替换为你想要的存储桶名称
+            bucket_name='metagenomic-' + ACCOUNT + '-' + REGION,  # 替换为你想要的存储桶名称
             removal_policy=RemovalPolicy.DESTROY,  # 可选，指定存储桶删除策略
             auto_delete_objects=True  # 可选，指定删除桶的时候是否自动删除存储桶中的对象
         )
@@ -74,11 +74,15 @@ class VPCStack(Stack):
                               partition_key=ddb.Attribute(name="sample", type=ddb.AttributeType.STRING),
                               billing_mode=ddb.BillingMode.PAY_PER_REQUEST, # On-demand capacity
                               removal_policy=RemovalPolicy.DESTROY)
-        
         self.vpc = vpc
+        self.bucket = bucket
         self.file_system = file_system
         self.repo = repo
-
+        self.ddb_table_qc = ddb_table_qc
+        self.ddb_table_metawrap = ddb_table_metawrap
+        self.ddb_table_annotation = ddb_table_annotation
+        
         CfnOutput(self, "VPCID", value=vpc.vpc_id)
+        CfnOutput(self, "S3", value=bucket.bucket_name)
         CfnOutput(self, "EFS", value=file_system.file_system_id)
         CfnOutput(self, "ECR", value=repo.repository_name)

@@ -31,3 +31,7 @@ NotebookStack： 4分钟
 直到所有的CloudFormatino都部署完毕，如下图:
 
 ![](/static/cdk-cloudformation.png)
+
+4.你还会收到一封SNS订阅确认邮件，点击Confirm subscription后才能收到后续的通知邮件
+
+![](/static/cdk-sns.png)

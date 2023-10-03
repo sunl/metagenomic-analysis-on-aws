@@ -4,7 +4,7 @@ from aws_cdk import (
     aws_ec2 as ec2,
     aws_ecr as ecr,
     aws_batch as batch,
-    aws_ecs as ecs
+    aws_ecs as ecs,
 )
 from constructs import Construct
 
@@ -70,7 +70,7 @@ class BatchStack(Stack):
                 "order": 1}])
 
         # Define job definition
-        batch_job_role =  iam.Role(self,'BatchJobRole', assumed_by=iam.ServicePrincipal('ecs-tasks.amazonaws.com'), description =' IAM role for batch job')
+        batch_job_role = iam.Role(self,'BatchJobRole', assumed_by=iam.ServicePrincipal('ecs-tasks.amazonaws.com'), description =' IAM role for batch job')
         batch_job_role.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name('AmazonS3FullAccess'))
         batch_job_role.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name('AmazonDynamoDBFullAccess'))
         batch_job_role.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name('AWSBatchFullAccess'))
@@ -177,3 +177,15 @@ class BatchStack(Stack):
                 cpu=48
             )
         )
+
+        self.job_definition_qc = job_definition_qc
+        self.job_definition_assembly = job_definition_assembly
+        self.job_definition_binning = job_definition_binning
+        self.job_definition_annotation = job_definition_annotation
+
+        self.job_queue_qc = job_queue_qc
+        self.job_queue_assembly = job_queue_assembly
+        self.job_queue_binning = job_queue_binning
+        self.job_queue_annotation = job_queue_annotation
+
+        CfnOutput(self, "OutputJobDefQC", value=job_definition_qc.job_definition_arn)

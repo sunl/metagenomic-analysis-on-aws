@@ -25,6 +25,7 @@ weight : 10
 - DynamoDB：存储任务状态信息
 - EFS：共享文件系统，存储任务运行脚本
 - SageMaker Notebook：任务投递客户端
+- Step Functions：自动化工作流
 
 ## 方案架构图
 
