@@ -1,11 +1,18 @@
+import os
+
 from aws_cdk import (
-    Stack, CfnOutput, RemovalPolicy, 
+    Stack, CfnOutput, RemovalPolicy,
     aws_ec2 as ec2,
+    aws_s3 as s3,
     aws_ecr as ecr,
     aws_efs as efs,
     aws_dynamodb as ddb,
+
 )
 from constructs import Construct
+
+ACCOUNT = os.getenv('AWS_ACCOUNT_ID', '')
+REGION = os.getenv('AWS_REGION', 'cn-nothwest-1')
 
 class VPCStack(Stack):
 
@@ -36,6 +43,12 @@ class VPCStack(Stack):
 
         # Create DynamoDB endpoint
         ddb_endpoint = vpc.add_gateway_endpoint("DynamoDBEndpoint", service=ec2.GatewayVpcEndpointAwsService.DYNAMODB)
+
+        bucket = s3.Bucket(self,'MetagenomicBucket',
+            bucket_name='metagenomic-' + ACCOUNT + '-' + REGION ,  # 替换为你想要的存储桶名称
+            removal_policy=RemovalPolicy.DESTROY,  # 可选，指定存储桶删除策略
+            auto_delete_objects=True  # 可选，指定删除桶的时候是否自动删除存储桶中的对象
+        )
 
         # create ECR repo  
         repo = ecr.Repository(self, "EcrRepo", repository_name="metagenomic", removal_policy=RemovalPolicy.DESTROY)
