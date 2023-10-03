@@ -5,7 +5,7 @@ weight : 51
 
 本节通过批量运行质控任务来演示如何大规模运行计算任务
 
-1.上传任务源数据到S3桶中，可以复制这些示例数据：
+1.上传任务源数据到S3桶中，可以用以下方式复制这些示例数据：
 ::alert[123456789012换成你自己的账户ID]
 
 :::code{showCopyAction=true showLineNumbers=false language=bash}
