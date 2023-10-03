@@ -27,12 +27,9 @@ class VPCStack(Stack):
                                cidr_mask=24
                             )
                            ],
+                           restrict_default_security_group=False,
                            nat_gateways=1,
                            )
-
-        default_sg = ec2.SecurityGroup.from_security_group_id(self, "DefaultSG", vpc.vpc_default_security_group)  
-        default_sg.add_ingress_rule(default_sg, ec2.Port.all_traffic())
-        default_sg.add_egress_rule(ec2.Peer.any_ipv4(), ec2.Port.all_traffic(), "allow all outbound")
 
         # Create S3 endpoint
         s3_endpoint = vpc.add_gateway_endpoint("S3Endpoint", service=ec2.GatewayVpcEndpointAwsService.S3)
@@ -49,6 +46,7 @@ class VPCStack(Stack):
         file_system = efs.FileSystem(self, "EFSFileSystem", file_system_name="metagenomic_efs", vpc=vpc, 
             vpc_subnets=ec2.SubnetSelection(subnets=vpc.private_subnets), security_group=efs_sg, 
             allow_anonymous_access=True, removal_policy=RemovalPolicy.DESTROY)
+        
 
         # Create DynamoDB tables
         ddb_table_qc = ddb.Table(self, "DDBTableQC", table_name="metagenomic_qc",
@@ -65,9 +63,9 @@ class VPCStack(Stack):
                               removal_policy=RemovalPolicy.DESTROY)
         
         self.vpc = vpc
-        self.default_sg = default_sg
         self.file_system = file_system
         self.repo = repo
 
-        CfnOutput(self, "Output", value=vpc.vpc_id)
+        CfnOutput(self, "VPCID", value=vpc.vpc_id)
         CfnOutput(self, "EFS", value=file_system.file_system_id)
+        CfnOutput(self, "ECR", value=repo.repository_name)

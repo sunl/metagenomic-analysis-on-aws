@@ -1,6 +1,6 @@
 ---
 title : "总结"
-weight : 40
+weight : 90
 ---
 
 Follow these steps!

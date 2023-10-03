@@ -3,5 +3,9 @@
     "cn-northwest-1a",
     "cn-northwest-1b",
     "cn-northwest-1c"
-  ]
+  ],
+  "security-group:account=691348495649:region=cn-northwest-1:securityGroupId=sg-0b41950391ab2fc51": {
+    "securityGroupId": "sg-0b41950391ab2fc51",
+    "allowAllOutbound": false
+  }
 }

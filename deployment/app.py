@@ -14,8 +14,7 @@ app = cdk.App()
 vpc_stack = VPCStack(app, "VPCStack", 
                      env=cdk.Environment(account=ACCOUNT, region=REGION))
 batch_stack = BatchStack(app, "BatchStack", 
-                         vpc=vpc_stack.vpc, 
-                         default_sg=vpc_stack.default_sg, 
+                         vpc=vpc_stack.vpc,
                          file_system=vpc_stack.file_system, 
                          repo=vpc_stack.repo,
                          env=cdk.Environment(account=ACCOUNT, region=REGION))

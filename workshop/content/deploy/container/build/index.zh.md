@@ -1,6 +1,6 @@
 ---
-title : "方案部署"
-weight : 32
+title : "构建镜像"
+weight : 331
 ---
 
 # 通过CDK部署解决方案

@@ -18,8 +18,8 @@ class NotebookStack(Stack):
         notebook_job_role.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name('AmazonSageMakerFullAccess'))    
         notebook = sagemaker.CfnNotebookInstance(self, "Notebook", instance_type="ml.t3.medium", role_arn=notebook_job_role.role_arn,
             notebook_instance_name="metagenomic",subnet_id=vpc.private_subnets[0].subnet_id, security_group_ids=[vpc.vpc_default_security_group],
-            volume_size_in_gb=50, direct_internet_access="Disabled"
-            #,default_code_repository="https://github.com/wttat/af2-batch-cdk",
+            volume_size_in_gb=50, direct_internet_access="Disabled",
+            default_code_repository="https://github.com/sunl/metagenomic-analysis-on-aws/"
         )
 
         
