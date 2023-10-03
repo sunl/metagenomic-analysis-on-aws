@@ -28,7 +28,7 @@ class BatchStack(Stack):
             self, "LaunchTemplate3",
             launch_template_name="lt_metagenomic_annotation", 
             block_devices = [ec2.BlockDevice(device_name="/dev/xvda",volume=ec2.BlockDeviceVolume.ebs(500,encrypted=True))])
-
+        
         # Define compute environment 
         private_subnets = vpc.private_subnets
         env_sg = ec2.SecurityGroup.from_security_group_id(self, "DefaultSG", security_group_id=vpc.vpc_default_security_group)

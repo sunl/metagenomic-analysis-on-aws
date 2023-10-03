@@ -61,7 +61,7 @@ class VPCStack(Stack):
             allow_anonymous_access=True, removal_policy=RemovalPolicy.DESTROY)
         
 
-        # Create DynamoDB tables
+        # Create DynamoDB tables        
         ddb_table_qc = ddb.Table(self, "DDBTableQC", table_name="metagenomic_qc",
                               partition_key=ddb.Attribute(name="sample", type=ddb.AttributeType.STRING),
                               billing_mode=ddb.BillingMode.PAY_PER_REQUEST, # On-demand capacity

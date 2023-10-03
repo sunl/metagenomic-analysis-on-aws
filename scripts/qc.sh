@@ -16,8 +16,8 @@ mkdir -p rawdata
 aws s3 sync ${src_path}/${sample}/ rawdata/
 echo 'unzip...'
 gunzip rawdata/*.gz
-mv rawdata/${sample}.R1.fq rawdata/${sample}.R_1.fastq
-mv rawdata/${sample}.R2.fq rawdata/${sample}.R_2.fastq
+mv rawdata/${sample}.R1.fastq rawdata/${sample}.R_1.fastq
+mv rawdata/${sample}.R2.fastq rawdata/${sample}.R_2.fastq
 aws dynamodb execute-statement --statement "UPDATE $dbtable SET status=2 WHERE sample='$sample'"
 
 echo 'quality control...'
