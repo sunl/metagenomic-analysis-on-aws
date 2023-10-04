@@ -51,7 +51,10 @@ class VPCStack(Stack):
         )
 
         # create ECR repo  
-        repo = ecr.Repository(self, "EcrRepo", repository_name="metagenomic", removal_policy=RemovalPolicy.DESTROY)
+        repo = ecr.Repository(self, "EcrRepo", repository_name="metagenomic", 
+                              removal_policy=RemovalPolicy.DESTROY
+                              #, auto_delete_images=True
+                              )
 
         # Create EFS file system
         efs_sg = ec2.SecurityGroup(self, "EFSSecurityGroup", security_group_name="efs_sg", vpc=vpc, allow_all_outbound=True)
