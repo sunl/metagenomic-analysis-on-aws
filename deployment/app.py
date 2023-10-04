@@ -16,7 +16,7 @@ vpc_stack = VPCStack(app, "VPCStack",
 batch_stack = BatchStack(app, "BatchStack", 
                          vpc=vpc_stack.vpc,
                          file_system=vpc_stack.file_system, 
-                         repo=vpc_stack.repo,
+                         repo_name=vpc_stack.repo_name,
                          env=cdk.Environment(account=ACCOUNT, region=REGION))
 notebook_stack = NotebookStack(app, "NotebookStack", 
                                vpc=vpc_stack.vpc,

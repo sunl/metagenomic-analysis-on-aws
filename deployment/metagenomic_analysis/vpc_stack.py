@@ -75,14 +75,8 @@ class VPCStack(Stack):
                               billing_mode=ddb.BillingMode.PAY_PER_REQUEST, # On-demand capacity
                               removal_policy=RemovalPolicy.DESTROY)
         self.vpc = vpc
-        self.bucket = bucket
         self.file_system = file_system
-        self.repo = repo
-        self.ddb_table_qc = ddb_table_qc
-        self.ddb_table_metawrap = ddb_table_metawrap
-        self.ddb_table_annotation = ddb_table_annotation
+        self.repo_name = repo.repository_name
         
-        CfnOutput(self, "VPCID", value=vpc.vpc_id)
-        CfnOutput(self, "S3", value=bucket.bucket_name)
-        CfnOutput(self, "EFS", value=file_system.file_system_id)
-        CfnOutput(self, "ECR", value=repo.repository_name)
+        CfnOutput(self, "VPCId", value=vpc.vpc_id)
+        CfnOutput(self, "S3Bucket", value=bucket.bucket_name)

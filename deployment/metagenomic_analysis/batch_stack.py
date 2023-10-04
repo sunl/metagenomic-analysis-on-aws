@@ -10,7 +10,7 @@ from constructs import Construct
 
 class BatchStack(Stack):
 
-    def __init__(self, scope: Construct, construct_id: str, vpc, file_system, repo, **kwargs) -> None:
+    def __init__(self, scope: Construct, construct_id: str, vpc, file_system, repo_name, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
         # The code that defines your stack goes here
@@ -75,7 +75,6 @@ class BatchStack(Stack):
         batch_job_role.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name('AmazonDynamoDBFullAccess'))
         batch_job_role.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name('AWSBatchFullAccess'))
 
-        repo_name = repo.repository_name
         image_id_qc = ecs.ContainerImage.from_ecr_repository(repository=ecr.Repository.from_repository_name(self, "QCImage",repo_name), tag="qc")
         image_id_metawrap = ecs.ContainerImage.from_ecr_repository(repository=ecr.Repository.from_repository_name(self, "MetawrapImage",repo_name), tag="metawrap")
         image_id_annotation = ecs.ContainerImage.from_ecr_repository(repository=ecr.Repository.from_repository_name(self, "AnnotationImage",repo_name), tag="annotation")
@@ -178,14 +177,12 @@ class BatchStack(Stack):
             )
         )
 
-        self.job_definition_qc = job_definition_qc
-        self.job_definition_assembly = job_definition_assembly
-        self.job_definition_binning = job_definition_binning
-        self.job_definition_annotation = job_definition_annotation
+        self.job_definition_qc = job_definition_qc.job_definition_arn
+        self.job_definition_assembly = job_definition_assembly.job_definition_arn
+        self.job_definition_binning = job_definition_binning.job_definition_arn
+        self.job_definition_annotation = job_definition_annotation.job_definition_arn
 
-        self.job_queue_qc = job_queue_qc
-        self.job_queue_assembly = job_queue_assembly
-        self.job_queue_binning = job_queue_binning
-        self.job_queue_annotation = job_queue_annotation
-
-        CfnOutput(self, "OutputJobDefQC", value=job_definition_qc.job_definition_arn)
+        self.job_queue_qc = job_queue_qc.job_queue_arn
+        self.job_queue_assembly = job_queue_assembly.job_queue_arn
+        self.job_queue_binning = job_queue_binning.job_queue_arn
+        self.job_queue_annotation = job_queue_annotation.job_queue_arn

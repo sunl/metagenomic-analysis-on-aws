@@ -24,5 +24,4 @@ class NotebookStack(Stack):
             default_code_repository="https://github.com/sunl/metagenomic-analysis-on-aws/"
         )
 
-        
-        CfnOutput(self, "Sagemaker Notebook", value=notebook.notebook_instance_name)
+        CfnOutput(self, "NotebookInstanceName", value=notebook.notebook_instance_name)
