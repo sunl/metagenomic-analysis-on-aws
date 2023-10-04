@@ -14,7 +14,7 @@ s3_mount_point=/s3
 
 echo 'mount s3 bucket'
 mkdir -p $s3_mount_point
-goofys --region cn-northwest-1 $bucket $s3_mount_point
+mount-s3 $bucket $s3_mount_point --region cn-northwest-1 
 base_dir=$s3_mount_point
 ls -lh $base_dir
 qc_results=$base_dir/results/qc

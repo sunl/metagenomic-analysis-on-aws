@@ -20,7 +20,7 @@ aws s3 sync s3://hyes/demo_samples/ s3://metagenomic-123456789012-cn-northwest-1
 
 ![](/static/notebook-s3.png)
 
-2.打开notebook/job-submit-qc.ipynb，运行python提交任务.
+2.打开notebook/job-submit-batch.ipynb，运行python提交任务.
 
 sample-info.xlsx文件每一行都包含需要处理的一个样本信息，如果有更多字段需求可自行添加，具体逻辑参考如下代码：
 :::code{showCopyAction=true showLineNumbers=false language=bash}

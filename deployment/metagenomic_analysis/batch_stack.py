@@ -108,7 +108,7 @@ class BatchStack(Stack):
                 "script": "/scripts/metawrap-assembly.sh",
                 "sample": "mud01.2020.11.S",
                 "threads":"96",
-                "memory":"248",
+                "memory":"185",
                 "type":"1",
                 "bucket":"hyes",
                 "dbtable":"metagenomic_metawrap"
@@ -123,7 +123,7 @@ class BatchStack(Stack):
                         container_path="/scripts"
                     )],
                 privileged=True,
-                memory=Size.mebibytes(253000),
+                memory=Size.mebibytes(190300),
                 cpu=96
             )
         )

@@ -21,24 +21,28 @@ class StepFunctionsStack(Stack):
             job_definition_arn=job0.job_definition_arn,
             job_name="metagenomic-qc",
             job_queue_arn=queue0.job_queue_arn,
+            result_path="$.DISCARD",
             payload=stepfunctions.TaskInput.from_json_path_at("$.params[0]")
         )
         task_1 = tasks.BatchSubmitJob(self, "SubmitJobAssembly",
             job_definition_arn=job1.job_definition_arn,
             job_name="metagenomic-assembly",
             job_queue_arn=queue1.job_queue_arn,
+            result_path="$.DISCARD",
             payload=stepfunctions.TaskInput.from_json_path_at("$.params[1]")
         )
         task_2 = tasks.BatchSubmitJob(self, "SubmitJobBinning",
             job_definition_arn=job2.job_definition_arn,
             job_name="metagenomic-binning",
             job_queue_arn=queue2.job_queue_arn,
+            result_path="$.DISCARD",
             payload=stepfunctions.TaskInput.from_json_path_at("$.params[2]")
         )
         task_3 = tasks.BatchSubmitJob(self, "SubmitJobAnnotation",
             job_definition_arn=job3.job_definition_arn,
             job_name="metagenomic-annotation",
             job_queue_arn=queue3.job_queue_arn,
+            result_path="$.DISCARD",
             payload=stepfunctions.TaskInput.from_json_path_at("$.params[3]")
         )
 
