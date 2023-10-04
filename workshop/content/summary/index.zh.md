@@ -5,7 +5,7 @@ weight : 90
 
 1.清除方案部署的资源
 :::code{showCopyAction=true showLineNumbers=false language=bash}
-cdk destroy --all --f
+cdk destroy --all -f
 :::
 
 2.删除EC2环境
