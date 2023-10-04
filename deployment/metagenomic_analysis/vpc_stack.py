@@ -46,15 +46,13 @@ class VPCStack(Stack):
 
         bucket = s3.Bucket(self,'MetagenomicBucket',
             bucket_name='metagenomic-' + ACCOUNT + '-' + REGION,  # 替换为你想要的存储桶名称
-            removal_policy=RemovalPolicy.RETAIN,  # 可选，指定存储桶删除策略
-            #auto_delete_objects=True  # 可选，指定删除桶的时候是否自动删除存储桶中的对象
+            removal_policy=RemovalPolicy.DESTROY,  # 可选，指定存储桶删除策略
+            auto_delete_objects=True  # 可选，指定删除桶的时候是否自动删除存储桶中的对象
         )
 
         # create ECR repo  
         repo = ecr.Repository(self, "EcrRepo", repository_name="metagenomic", 
-                              removal_policy=RemovalPolicy.DESTROY
-                              #, auto_delete_images=True
-                              )
+                              removal_policy=RemovalPolicy.DESTROY, auto_delete_images=True)
 
         # Create EFS file system
         efs_sg = ec2.SecurityGroup(self, "EFSSecurityGroup", security_group_name="efs_sg", vpc=vpc, allow_all_outbound=True)
