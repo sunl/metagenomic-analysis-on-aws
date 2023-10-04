@@ -19,6 +19,6 @@ weight : 330
 2.打开:link[SageMaker Notebook控制台]{href="https://cn-northwest-1.console.amazonaws.cn/sagemaker/home?region=cn-northwest-1#/notebook-instances"}, 打开笔记本实例的JupyterLab:
 ![](/static/notebook-console.png)
 
-进入metagenomic-analysis-on-aws/notebook目录，可通过container-images.ipynb笔记本中的脚本把预置镜像推送到你自己账号的ECR中：
+进入metagenomic-analysis-on-aws/notebook目录，可通过执行container-images.ipynb笔记本中的脚本把预置镜像推送到你自己账号的ECR中：
 
 ![](/static/notebook-container.png)

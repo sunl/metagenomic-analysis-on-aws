@@ -46,8 +46,8 @@ class VPCStack(Stack):
 
         bucket = s3.Bucket(self,'MetagenomicBucket',
             bucket_name='metagenomic-' + ACCOUNT + '-' + REGION,  # 替换为你想要的存储桶名称
-            removal_policy=RemovalPolicy.DESTROY,  # 可选，指定存储桶删除策略
-            auto_delete_objects=True  # 可选，指定删除桶的时候是否自动删除存储桶中的对象
+            removal_policy=RemovalPolicy.RETAIN,  # 可选，指定存储桶删除策略
+            #auto_delete_objects=True  # 可选，指定删除桶的时候是否自动删除存储桶中的对象
         )
 
         # create ECR repo  

@@ -33,7 +33,7 @@ import re
 wb = openpyxl.load_workbook('sample-info.xlsx')
 sheet = wb['metagenomic']
 #改成你自己的账户ID
-account='691348495649'
+account='123456789012'
 
 ##################################################################
 #任务脚本
