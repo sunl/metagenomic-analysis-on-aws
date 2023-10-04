@@ -18,11 +18,12 @@ cdk deploy --all --require-approval never
 :::
 (注：--require-approval never表示不会在部署过程中提示选择“yes/no”自动往下运行，如果希望部署时确认是否部署则只需要运行“cdk deploy --all”即可)
 
-3.CDK部署将提供3个CloudFormation堆栈以及相关资源，例如 VPC、EFS、DynamoDB、ECR、Batch、和 SageMaker Notebook 等，预计安装的部署时间为13分钟
+3.CDK部署将提供4个CloudFormation堆栈以及相关资源，例如 VPC、EFS、DynamoDB、ECR、Batch、SageMaker Notebook和Step Functions状态机等，预计安装的部署时间约为18分钟
 :::code{showCopyAction=true showLineNumbers=false language=bash}
-VPCStack： 3分钟
-BatchStack：3分钟
-NotebookStack： 4分钟
+VPCStack： 3分钟左右
+BatchStack：4分钟左右
+NotebookStack： 11分钟左右
+StepFunctinosStack：1分钟左右
 :::
 部署过程如下:
 

@@ -26,11 +26,14 @@ weight : 10
 - EFS：共享文件系统，存储任务运行脚本
 - SageMaker Notebook：任务投递客户端
 - Step Functions：自动化工作流
+- SNS：邮件通知服务
 
 ## 方案架构图
 
-大规模任务调度
+大规模批量任务分析
 
-![](/static/arch-large-scale.png)
+![](/static/arch-batch.png)
 
-自动化流程
+自动化工作流
+
+![](/static/arch-pipeline.png)
