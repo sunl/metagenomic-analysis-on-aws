@@ -130,17 +130,20 @@ response = sfn.start_execution(
 print(response['executionArn'])
 :::
 
-2.查看Step Functions中状态机执行的详细情况
+2.查看Step Functions中状态机执行状态：
 
 ![](/static/job-sfn-execution.png)
 
+收到邮件通知，流程执行成功：
+![](/static/job-sfn-sns.png)
 
+每个执行步骤详细情况：
 ![](/static/job-sfn-pipeline.png)
 
-3.查看S3桶中的每个步骤的结果文件：
+查看DynamoDB表中每个步骤的任务执行状态信息，如果某个步骤的执行时间有异常，再去查看Batch任务中的日志进行分析：
 
-![](/static/job-s3-sfn.png)
+![](/static/job-sfn-ddb.png)
 
-4.查看DynamoDB表中每个步骤的任务执行状态信息：
+查看S3桶中的每个步骤的结果文件：
 
-![](/static/job-ddb-sfn.png)
+![](/static/job-sfn-s3.png)
