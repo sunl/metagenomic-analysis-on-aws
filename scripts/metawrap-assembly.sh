@@ -76,13 +76,4 @@ aws dynamodb execute-statement --statement "UPDATE $dbtable SET status=2, assemb
 echo "delete local files"
 rm ${assembly_dir} -rf
 
-echo "submit metawrap binning job"
-script=/scripts/metawrap-binning.sh
-threads=32
-memory=58
-jobqueue='q-metawrap-binning'
-jobdef='jd-metawrap-binning:5'
-jobname=$dbtable-${sample//./_}-$threads
-aws batch submit-job --job-name $jobname --job-queue $jobqueue --job-definition $jobdef --parameters script=$script,sample=$sample,threads=$threads,memory=$memory,type=$type,bucket=$bucket,dbtable=$dbtable
-
 echo 'done'
