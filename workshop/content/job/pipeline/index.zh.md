@@ -1,9 +1,9 @@
 ---
-title : "自动化工作流"
+title : "自动化流程"
 weight : 52
 ---
 
-本节演示如何运行自动化工作流
+本节演示如何运行自动化分析流程
 
 1.打开notebook/job-submit-stepfunctions.ipynb，运行python提交任务.
 ::alert[123456789012换成你自己的账户ID]

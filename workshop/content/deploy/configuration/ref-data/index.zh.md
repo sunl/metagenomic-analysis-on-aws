@@ -1,9 +1,9 @@
 ---
 title : "参考数据库"
-weight : 35
+weight : 333
 ---
 
-1.复制任务程序所需要的参考数据库到你自己的S3存储桶中
+宏基因分析的软件有些需要依赖参考数据库，通过以下命令复制任务程序所需要的参考数据库到你自己的S3存储桶中
 ::alert[123456789012换成你自己的账户ID]
 
 :::code{showCopyAction=true showLineNumbers=false language=bash}

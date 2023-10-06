@@ -1,9 +1,9 @@
 ---
 title : "构建镜像"
-weight : 331
+weight : 3311
 ---
 
-也可以自己构建镜像并推送到ECR中，以下是预置的4个镜像的Dockerfile，供参考：
+如果有其它软件需要使用，也可以自己构建镜像并推送到ECR中，以下是预置的4个镜像的Dockerfile，供参考（此处假设用户熟悉如何构建容器镜像，具体推送方法可以参考上一节内容或者ECR镜像仓库中的推送命令）：
 ### 1.qc
 :::code{showCopyAction=true showLineNumbers=false language=bash}
 FROM amazonlinux:2
